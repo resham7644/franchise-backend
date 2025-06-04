@@ -1,4 +1,5 @@
-var url = "mongodb+srv://resham7644:u6fEoRYifTKxuIPA@cluster0.kcqyd.mongodb.net/franchise-project?retryWrites=true&w=majority";
+require('dotenv').config();
 
+var url = process.env.URL
 module.exports={url};
 

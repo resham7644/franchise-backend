@@ -32,6 +32,12 @@ mongoose.connect(urll).then(
         console.log(err.message);
     })
 
+
+app.get("/", (req, res) => {
+  res.send("Backend working!");
+});
+
+
 var formRouter = require("./routers/formRouter");
 app.use("/form",formRouter);
 var userRouter = require("./routers/userRouter");

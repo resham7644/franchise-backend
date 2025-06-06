@@ -5,11 +5,13 @@ var path = require("path");
 var {url} = require("./config/config");
 var cors = require('cors');
 var cloudinary = require("cloudinary").v2;
+require('dotenv').config();
+
 
 cloudinary.config({ 
-    cloud_name: 'doeunlxxa', 
-    api_key: '875193351841854', 
-    api_secret: 'u6wtPrtZ6rTvDFC0hUiT7aenc9o' // Click 'View API Keys' above to copy your API secret
+    cloud_name: process.env.CLOUDINARY_NAME, 
+    api_key: process.env.CLOUDINARY_API_KEY, 
+    api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
 var app = express();
@@ -19,9 +21,12 @@ app.use(fileuploader());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-app.listen(2004,()=>{
-    console.log("Server Started");
-})
+const PORT = process.env.PORT || 2004;
+
+app.listen(PORT, () => {
+    console.log(`Server started on port ${PORT}`);
+});
+
 
 let urll = url;
 
